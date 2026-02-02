@@ -1,0 +1,177 @@
+{
+  "groups": [
+    {
+      "id": "test-001",
+      "words": [
+        "yellow-1",
+        "yellow-2",
+        "yellow-3",
+        "yellow-4",
+        "green-1",
+        "green-2",
+        "green-3",
+        "green-4",
+        "blue-1",
+        "blue-2",
+        "blue-3",
+        "blue-4",
+        "purple-1",
+        "purple-2",
+        "purple-3",
+        "purple-4"
+      ],
+      "solutions": [
+        {
+          "label": "Yellow Meows",
+          "color": "yellow",
+          "words": ["yellow-1", "yellow-2", "yellow-3", "yellow-4"]
+        },
+        {
+          "label": "Those who meow (green)",
+          "color": "green",
+          "words": ["green-1", "green-2", "green-3", "green-4"]
+        },
+        {
+          "label": "mrow blue",
+          "color": "blue",
+          "words": ["blue-1", "blue-2", "blue-3", "blue-4"]
+        },
+        {
+          "label": "Meow but ourple",
+          "color": "purple",
+          "words": ["purple-1", "purple-2", "purple-3", "purple-4"]
+        }
+      ]
+    },
+    {
+      "id": "mobs-001",
+      "words": [
+        "Cow",
+        "Horse",
+        "Rabbit",
+        "Sheep",
+        "Shulker",
+        "Stray",
+        "Strider",
+        "Axolotl",
+        "Zombie Villager",
+        "Spider Jockey",
+        "Bezal",
+        "Splatter",
+        "Golden Goblin",
+        "Wraith",
+        "Mega Bat",
+        "Bal"
+      ],
+      "solutions": [
+        {
+          "label": "Trapper Animals",
+          "color": "yellow",
+          "words": ["Cow", "Horse", "Rabbit", "Sheep"]
+        },
+        {
+          "label": "Modern Mobs",
+          "color": "green",
+          "words": ["Shulker", "Stray", "Strider", "Axolotl"]
+        },
+        {
+          "label": "Progresses Slayer",
+          "color": "blue",
+          "words": ["Zombie Villager", "Spider Jockey", "Bezal", "Splatter"]
+        },
+        {
+          "label": "Hit Based Mobs",
+          "color": "purple",
+          "words": ["Golden Goblin", "Wraith", "Mega Bat", "Bal"]
+        }
+      ]
+    },
+    {
+      "id": "stuff-001",
+      "words": [
+        "Enchanted Bread",
+        "Block of Coal",
+        "Foul Flesh",
+        "Solar Panel",
+        "Melodys Hair",
+        "Yellow Rock",
+        "Rift Necklace",
+        "Vulcanic Rock",
+        "Recombobulator 3000",
+        "Dungeon Quality",
+        "Livid Fragment",
+        "Tier Boost",
+        "Emerald Blade",
+        "Enchanted Red Mushroom Block",
+        "Emerald",
+        "Flower Minion"
+      ],
+      "solutions": [
+        {
+          "label": "Minion Fuel",
+          "color": "yellow",
+          "words": ["Enchanted Bread", "Block of Coal", "Foul Flesh", "Solar Panel"]
+        },
+        {
+          "label": "Items with unique color name",
+          "color": "green",
+          "words": ["Melodys Hair", "Yellow Rock", "Rift Necklace", "Vulcanic Rock"]
+        },
+        {
+          "label": "Upgrades rarity",
+          "color": "blue",
+          "words": ["Recombobulator 3000", "Dungeon Quality", "Livid Fragment", "Tier Boost"]
+        },
+        {
+          "label": "Romero & Juliette Quest",
+          "color": "purple",
+          "words": ["Emerald Blade", "Enchanted Red Mushroom Block", "Emerald", "Flower Minion"]
+        }
+      ]
+    },
+    {
+      "id": "stuff-001",
+      "words": [
+        "Flawless Topaz",
+        "Magma Core",
+        "Gemstone Mixture",
+        "Gemstone Drill LT-522",
+        "Flawless Jasper",
+        "Ankylosaurus",
+        "Lonesome Miner",
+        "Gemstone Gauntlet",
+        "Flawless Ruby",
+        "Flawless Amethyst",
+        "Flawless Jade",
+        "Flawless Amber",
+        "Flawless Aquamarine",
+        "Bejeweled Handle",
+        "Refined Umber",
+        "Blue Goblin Egg"
+      ],
+      "solutions": [
+        {
+          "label": "Topaz Drill Ingredients",
+          "color": "yellow",
+          "words": ["Flawless Topaz", "Magma Core", "Gemstone Mixture", "Gemstone Drill LT-522"]
+        },
+        {
+          "label": "Gives Strength",
+          "color": "green",
+          "words": ["Flawless Jasper", "Ankylosaurus", "Lonesome Miner", "Gemstone Gauntlet"]
+        },
+        {
+          "label": "Can be put in Ring of Power",
+          "color": "blue",
+          "words": ["Flawless Ruby", "Flawless Amethyst", "Flawless Jade", "Flawless Amber"]
+        },
+        {
+          "label": "Vanguard Loot Table",
+          "color": "purple",
+          "words": ["Flawless Aquamarine", "Bejeweled Handle", "Refined Umber", "Blue Goblin Egg"]
+        }
+      ]
+    }
+  ]
+}
+

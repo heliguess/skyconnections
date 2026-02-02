@@ -1,0 +1,101 @@
+@font-face {
+    font-family: "Monocraft";
+    src: url("../font/Monocraft-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Minecraft";
+    src: url("../font/Minecraft.otf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Minecraft";
+    src: url("../font/Minecraft-Bold.otf") format("opentype");
+    font-weight: 700;
+}
+
+body {
+    font-family: "Minecraft";
+    font-weight: 400;
+    text-align: center;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.word {
+    color: #121212;
+    cursor: pointer;
+    user-select: none;
+    background: #efefe6;
+    border-radius: 5px;
+    width: 100%;
+    min-width: 0;
+    padding: 14px;
+    box-sizing: border-box;
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.word.selected {
+    background: #5a594e;
+    color: #f8f8f8;
+}
+
+.solved-group {
+    max-width: 580px;
+    margin: 0 auto 10px;
+    padding: 14px;
+    border-radius: 6px;
+    text-align: center;
+    color: #111;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    animation: pop 0.25s ease-out;
+    
+}
+
+.board-width {
+  width: 560px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.word {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+#grid.max-selected .word:not(.selected):not(.solved) {
+    cursor: default;
+}
+
+.group-title{
+    font-family: "Minecraft";
+    font-weight: 700;
+}
+
+@keyframes pop {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
