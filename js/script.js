@@ -1,5 +1,7 @@
+let alertBox = document.getElementById('alertBox')
 let selected = [];
 let solvedLabels = new Set();
+let guessHistory = [];
 
 const COLOR_MAP = {
     yellow: "#F9DF6D",
@@ -7,6 +9,47 @@ const COLOR_MAP = {
     blue: "#5DA9E9",
     purple: "#B07ACF"
 };
+
+
+let messageTimeout = null;
+
+function tempMessage(text, win = false, ms = 4000) {
+    alertBox.innerHTML = text;
+    alertBox.style = win ? "color: #00AA00; text-shadow: 2px 2px 0px #002A00;" : "color: #FF5555; text-shadow: 2px 2px 0px #3f1515;";
+
+    if (messageTimeout) clearTimeout(messageTimeout);
+
+    messageTimeout = setTimeout(() => {
+        alertBox.innerHTML = "&nbsp;";
+        messageTimeout = null;
+    }, ms);
+}
+
+function shareResults() {
+    const EMOJI_MAP = {
+        yellow: "🟨",
+        green: "🟩",
+        blue: "🟦",
+        purple: "🟪",
+        gray: "⬜" //failsafe idk
+    };
+
+    let resultString = "Skynnections\n";
+    
+    guessHistory.forEach(guess => {
+        if (Array.isArray(guess)) {
+            resultString += guess.map(c => EMOJI_MAP[c]).join("") + "\n";
+        } else {
+            resultString += EMOJI_MAP[guess].repeat(4) + "\n";
+        }
+    });
+
+    navigator.clipboard.writeText(resultString).then(() => {
+        tempMessage("Results copied to clipboard!", true);
+    }).catch(() => {
+        tempMessage("Failed to copy results.");
+    });
+}
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -26,13 +69,16 @@ function shuffleGrid() {
 
     const tiles = Array.from(grid.children);
 
-    selected.forEach(s => s.div.classList.remove("selected"));
-    selected = [];
     updateGridState();
 
     shuffle(tiles);
 
     tiles.forEach(tile => grid.appendChild(tile));
+
+    tiles.forEach(tile => tile.classList.add("fade"));
+        setTimeout(() => {
+            tiles.forEach(tile => tile.classList.remove("fade"))
+        }, 400);
 }
 
 
@@ -63,6 +109,8 @@ function init(puzzle) {
     checkSelection(puzzle.solutions);
 
     document.getElementById("shuffle").onclick = shuffleGrid;
+
+    document.getElementById("share").onclick = shareResults;
 }
 
 
@@ -87,7 +135,7 @@ function toggle(div, word) {
 function checkSelection(solutions) {
 
     if (selected.length !== 4) {
-    alert("Select exactly 4 words");
+        tempMessage("Select exactly 4 words");
     return;
     }
 
@@ -105,22 +153,42 @@ function checkSelection(solutions) {
 
         solved.innerHTML = `
             <span class="group-title">${solution.label.toUpperCase()}</span>
-            <br>
             <span>${solution.words.join(", ")}</span> 
         `;
 
-        document.getElementById("board")
-            .insertBefore(solved, document.getElementById("grid"));
+        document.getElementById("board").insertBefore(solved, document.getElementById("grid"));
 
         solvedLabels.add(solution.label);
 
         if (solvedLabels.size === solutions.length) {
-            alert("Puzzle complete!");
+            tempMessage("Puzzle complete!", true, 20000);
+            document.getElementById('shuffle').style.display = "none"
+            document.getElementById('share').style.display = "inline-block"
         }
+        selected = [];
+        guessHistory.push(solution.color);
+    } else {
+        let isOneAway = false;
 
-        
+        solutions.forEach(sol => {
+            if (!solvedLabels.has(sol.label)) {
+                const matches = sol.words.filter(w => words.includes(w)).length;
+                if (matches === 3) isOneAway = true;
+            }
+        });
+
+        tempMessage(isOneAway ? "One away..." : "Incorrect");
+
+        selected.forEach(s => s.div.classList.add("shake"));
+        setTimeout(() => {
+            selected.forEach(s => s.div.classList.remove("shake"))
+        }, 400);
+
+        let guessColors = selected.map(s => {
+            let found = solutions.find(sol => sol.words.includes(s.word));
+            return found ? found.color : 'gray'; //failsafe idk
+        });
+        guessHistory.push(guessColors);
     }
-
-    selected = [];
     updateGridState();
 }

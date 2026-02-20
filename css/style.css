@@ -19,6 +19,15 @@ body {
     font-family: "Minecraft";
     font-weight: 400;
     text-align: center;
+    background-color: rgb(247, 247, 247);
+}
+
+#container {
+    width: 60%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 10px 10px 50px 10px;
+    margin: auto;
 }
 
 #grid {
@@ -48,6 +57,8 @@ body {
     word-break: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    height: 80px;
+
 }
 
 .word.selected {
@@ -56,6 +67,10 @@ body {
 }
 
 .solved-group {
+    display: grid;
+    place-content: center; 
+    justify-items: center;
+    line-height: 20px;
     max-width: 580px;
     margin: 0 auto 10px;
     padding: 14px;
@@ -66,19 +81,20 @@ body {
     width: 100%;
     box-sizing: border-box;
     animation: pop 0.25s ease-out;
+    height: 80px;
     
 }
 
 .board-width {
-  width: 560px;
-  max-width: 100%;
-  margin: 0 auto;
+    width: 560px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .word {
-  word-break: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 #grid.max-selected .word:not(.selected):not(.solved) {
@@ -88,10 +104,81 @@ body {
 .group-title{
     font-family: "Minecraft";
     font-weight: 700;
+    font-size: 18px;
+}
+
+.btnMc{
+    font-family: "Minecraft"; 
+    position: relative;
+    image-rendering: pixelated;
+    background: url("../img/btn.png") no-repeat;
+    background-size: 100% 100%;
+    width: 80px;
+    height: 71px;
+    font-size: 15px;
+    border: 0px solid;
+    box-shadow: 0 0 0 2px black;
+    color: #fcfcfc;
+    text-shadow: 2px 2px 0px #3e3e3e;
+}
+
+.btnMc:hover {
+    box-shadow: 0 0 0 2px #ffffff;
+    cursor: pointer;
+}
+
+#alertBox {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(15, 0, 15, 0.90);
+    position: relative;
+    overflow: hidden;
+    image-rendering: auto;
+    border: 0px;
+    height: 40px;
+    width: 400px;
+    margin: auto;
+
+    box-shadow: 
+    0 -4px 0 -2px #271927, 0 4px 0 -2px #271927,
+    -4px 0 0 -2px #271927, 4px 0 0 -2px #271927,
+    0 -2px 0 0px #271927, 0 2px 0 0px #271927,
+    -2px 0 0 0px #271927, 2px 0 0 0px #271927;
+    
+}
+
+#alertBox::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    border: 2px solid rgb(54, 11, 117);
+    pointer-events: none;
+}
+
+.shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+.fade {
+    animation: fade-in 0.4s ease-in
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
 }
 
 @keyframes pop {
     from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { transform: scale(1); opacity: 0.5; }
     to { transform: scale(1); opacity: 1; }
 }
 
